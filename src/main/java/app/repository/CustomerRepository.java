@@ -2,7 +2,6 @@ package app.repository;
 
 import app.domain.Customer;
 
-import java.lang.reflect.MalformedParameterizedTypeException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
