@@ -10,12 +10,29 @@ public class Customer {
     private boolean active;
     private final List<Product> cart = new ArrayList<>();
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getCart() {
+
+        return cart;
     }
 
     @Override

@@ -12,8 +12,20 @@ public class Product {
         return title;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public void setId(Long id) {
