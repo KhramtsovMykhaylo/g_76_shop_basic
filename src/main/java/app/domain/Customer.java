@@ -5,40 +5,44 @@ import java.util.List;
 import java.util.Objects;
 
 public class Customer {
+
     private Long id;
     private String name;
     private boolean active;
     private final List<Product> cart = new ArrayList<>();
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public String getName() {
-        return name;
+    public Customer(String name) {
+        this.name = name;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public List<Product> getCart() {
+    public boolean isActive() {
+        return active;
+    }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public List<Product> getCart() {
         return cart;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (object == null || getClass() != object.getClass()) return false;
-        Customer customer = (Customer) object;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
         return Objects.equals(id, customer.id);
     }
 
@@ -49,7 +53,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        String info = String.format("Customer: id - %d, name -%s, active -%s%n",
+        /*
+        Customer: id - 5, name - Vasya, active - yes
+        Cart: Banana Apple Orange
+         */
+        String info = String.format("Customer: id - %d, name - %s, active - %s%n",
                 id, name, active ? "yes" : "no");
         StringBuilder builder = new StringBuilder(info);
         builder.append("Cart:");
