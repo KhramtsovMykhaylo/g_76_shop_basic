@@ -2,45 +2,54 @@ package app.domain;
 
 import java.util.Objects;
 
+/*
+Этот класс находится на первом слое нашего приложения - домен.
+Домен содержит классы, описывающие сущности, с которыми работает приложение.
+ */
 public class Product {
+
     private Long id;
     private String title;
     private double price;
     private boolean active;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public boolean isActive() {
-        return active;
+    public Product(String title, double price) {
+        this.title = title;
+        this.price = price;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setId(Long id) {
-
-        this.id = id;
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
-    public boolean equals(Object object) {
-        if (object == null || getClass() != object.getClass()) return false;
-        Product product = (Product) object;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
         return Objects.equals(id, product.id);
     }
 
@@ -51,7 +60,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("Product: id - %d, title -%s, price - %.2f, active -%s",
+        return String.format("Product: id - %d, title - %s, price - %.2f, active - %s",
                 id, title, price, active ? "yes" : "no");
     }
 }
