@@ -20,8 +20,31 @@ import java.util.List;
 Вернуть суммарную стоимость всех продуктов в базе данных (активных).
 Вернуть среднюю стоимость продукта в базе данных (из активных).
  */
+/*
+Singltone
+Метод, который возвращает единственный объект продуктового сервиса.
+Если объект ещё не создавался, то метод его создаёт внутри if.
+Если объект уже создавался ранее, метод больше не создаёт второй объект,
+вместо этого он просто возвращает тот самый ранее созданный объект.
+Таким образом, метод getInstance() можно вызвать сколько угодно раз,
+но мы всегда получим ОДИН И ТОТ ЖЕ объект
+ */
 public class ProductService {
+
+    private static ProductService instance;
+
     private final ProductRepository repository = new ProductRepository();
+
+    private ProductService() {
+
+    }
+
+    public static ProductService getInstance() {
+        if(instance==null){
+            instance=new ProductService();
+        }
+        return instance;
+    }
 
     //Сохранить продукт в базе данных (при сохранении продукт автоматически считается активным).
     public Product save(Product product) {
@@ -96,7 +119,8 @@ public class ProductService {
     public int getActiveProductCount() {
         return getAllActiveProducts().size();
     }
-//Вернуть среднюю стоимость продукта в базе данных (из активных).
+
+    //Вернуть среднюю стоимость продукта в базе данных (из активных).
     public double getActiveProductsTotalCoast() {
         /*
         double sum = 0.0;
@@ -112,8 +136,9 @@ public class ProductService {
                 .sum();
 
     }
+
     //Вернуть среднюю стоимость продукта в базе данных (из активных).
-    public double getActiveProductsAveragePrice(){
+    public double getActiveProductsAveragePrice() {
 
         return getAllActiveProducts()
                 .stream()
@@ -128,7 +153,6 @@ public class ProductService {
         return getActiveProductsTotalCoast()/getActiveProductCount();
         */
     }
-
 
 
 }
